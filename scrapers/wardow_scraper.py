@@ -20,17 +20,21 @@ class WardowScraper(NextPageButtonScraper):
             )
         )
 
+        # Extract Main Product
         product = json.loads(main_color.extracted_content)
-        product[0]['ProductURL'] = product_url
-        product[0]['markdown'] = main_color.markdown.fit_markdown
+        if product:
+            product[0]['ProductURL'] = product_url
+            product[0]['markdown'] = main_color.markdown.fit_markdown
 
-        self.logger.debug(f"Successfully loaded main color for : {product_url}")
+            self.logger.debug(f"Successfully loaded main color for : {product_url}")
 
-        # Clean Product Data
-        product[0] = self.clean_product_data(product[0])
+            # Clean Product Data
+            product[0] = self.clean_product_data(product[0])
 
-        # Save product data
-        self.dal.save_product(product)
+            # Save product data
+            self.dal.save_product(product)
+        else:
+            self.logger.info(f"Failed to load main color for : {product_url}")
 
     def clean_product_data(self, product):
         """Clean product data"""
@@ -43,4 +47,9 @@ class WardowScraper(NextPageButtonScraper):
 
         product['OriginalPrice'] = float(re.search(r'[\d,]+', product['OriginalPrice']).group().replace(',', ''))
         product['CurrentPrice'] = float(re.search(r'[\d,]+', product['CurrentPrice']).group().replace(',', ''))
+
+        # Split sku code to extract product code and color code
+        sku_splitted = product['sku'].split('-')
+        product['ProductCode'] = sku_splitted [0]
+        product['ColorCode'] = sku_splitted[1] if len(sku_splitted) > 1 else ''
         return product
