@@ -2,6 +2,8 @@ from scrapers.base_scraper import NextPageButtonScraper
 import json
 from crawl4ai import CrawlerRunConfig, CacheMode
 from crawl4ai.extraction_strategy import JsonCssExtractionStrategy
+from my_utils import FallbackJsonCssExtractionStrategy
+import re
 
 class WardowScraper(NextPageButtonScraper):
     async def parse_product(self, product_url: str, brand: str):
@@ -13,7 +15,7 @@ class WardowScraper(NextPageButtonScraper):
             url=product_url,
             config=CrawlerRunConfig(
                 cache_mode=CacheMode.BYPASS,
-                extraction_strategy=JsonCssExtractionStrategy(schema=product_schema),
+                extraction_strategy=FallbackJsonCssExtractionStrategy(schema=product_schema),
                 markdown_generator=self.md_generator
             )
         )
@@ -63,4 +65,7 @@ class WardowScraper(NextPageButtonScraper):
         product['DescriptionInside'] = [item.get('feature') for item in product['DescriptionInside'] if item]
         product['DescriptionGeneral'] = [item.get('feature') for item in product['DescriptionGeneral'] if item]
         product['ProductDetails'] = [item.get('feature') for item in product['ProductDetails'] if item]
+
+        product['OriginalPrice'] = float(re.search(r'[\d,]+', product['OriginalPrice']).group().replace(',', ''))
+        product['CurrentPrice'] = float(re.search(r'[\d,]+', product['CurrentPrice']).group().replace(',', ''))
         return product
