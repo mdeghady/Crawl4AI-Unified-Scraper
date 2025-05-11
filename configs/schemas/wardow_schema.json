@@ -38,7 +38,7 @@
     },
     "product_page_schema" : {
         "name": "Wardow Product Schema",
-        "baseSelector": "div.product-main",
+        "baseSelector": "div.product-view",
         "fields": [
             {
             "name":"Brand",
@@ -57,40 +57,44 @@
                 "attribute": "src"
             },
             {
+                "name": "Category",
+                "selector": ["ul[itemprop=\"breadcrumb\"] li:nth-child(2)" , "ul[itemprop=\"breadcrumb\"] li"],
+                "type": "text",
+                "default": ""
+            },
+            {
                 "name": "ProductColor",
                 "selector": "div.colors p.headline span",
-                "type": "text"
+                "type": "text",
+                "default": ""
             },
             {
                 "name": "StockStatus",
                 "selector": "p.availability span",
-                "type": "text"
+                "type": "text",
+                "default": ""
             },
             {
                 "name": "AvailabilityNote",
                 "selector": "p.availability",
-                "type": "text"
+                "type": "text",
+                "default": ""
             },
             {
                 "name": "StockQuantityLeft",
                 "selector": "p.availability-only strong",
-                "type": "text"
+                "type": "text",
+                "default": ""
             },
             {
                 "name": "CurrentPrice",
-                "selector": ["p.special-price span.price meta[itemprop='price']","span.regular-price span.price"],
+                "selector": ["p.special-price span.price","span.regular-price span.price"],
                 "type": "text",
                 "default": "0"
             },
             {
                 "name": "OriginalPrice",
                 "selector": ["p.old-price span.price","span.regular-price span.price"],
-                "type": "text",
-                "default": "0"
-            },
-            {
-                "name": "DiscountAmount",
-                "selector": "div.price-info__sale span.price",
                 "type": "text",
                 "default": "0"
             },
@@ -122,6 +126,7 @@
                 "name": "ProductDetails",
                 "selector": "div.description-details div.std li",
                 "type": "list",
+                "default": [],
                 "fields":[
                     {"name":"feature","type":"text"}
                 ]
@@ -130,6 +135,7 @@
                 "name": "DescriptionInside",
                 "selector": "div.description-inside div.std li",
                 "type": "list",
+                "default": [],
                 "fields":[
                     {"name":"feature","type":"text"}
                 ]
@@ -138,6 +144,7 @@
                 "name": "DescriptionGeneral",
                 "selector": "div.description-general li:not(.sku)",
                 "type": "list",
+                "default": [],
                 "fields":[
                     {"name":"feature","type":"text"}
 
@@ -147,6 +154,7 @@
               "name":"OtherColorsURLs",
               "selector": "div.product-main div.colors li",
               "type":"list",
+              "default": [],
               "fields":[
                   {
                       "name":"ColorURL",
