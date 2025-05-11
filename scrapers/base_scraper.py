@@ -38,7 +38,7 @@ class BaseScraper(ABC):
                 return
 
             visited_brands = set()
-            for brand in brands[2:3]:# Remove [:] to scrape all brands
+            for brand in brands:# Remove [:] to scrape all brands
                 self.logger.info(f"Scraping brand: {brand['BrandName']}")
                 brand_url = urljoin(self.base_url, brand['BrandURL'])
 
