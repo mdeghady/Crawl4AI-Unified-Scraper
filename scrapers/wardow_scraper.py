@@ -24,35 +24,10 @@ class WardowScraper(NextPageButtonScraper):
         product[0]['ProductURL'] = product_url
         product[0]['markdown'] = main_color.markdown.fit_markdown
 
-
         self.logger.debug(f"Successfully loaded main color for : {product_url}")
 
-
-        # Extract other Colors urls
-        other_colors_urls = [color.get("ColorURL")  for product_item in product for
-                             color in product_item.get('OtherColorsURLs') if color.get("ColorURL")]
-
-
-        if other_colors_urls:
-            # Extract other colors
-            color_response = await self.crawler.arun_many(
-                urls=other_colors_urls,
-                config=CrawlerRunConfig(
-                    cache_mode=CacheMode.BYPASS,
-                    extraction_strategy=JsonCssExtractionStrategy(schema=product_schema),
-                    markdown_generator=self.md_generator
-                ),
-
-            )
-            for result, product_url in zip(color_response, other_colors_urls):
-                color_product = json.loads(result.extracted_content)
-                color_product[0]['ProductURL'] = product_url
-                color_product[0]['markdown'] = result.markdown.fit_markdown
-                product.extend(color_product)
-
         # Clean Product Data
-        for i in range(len(product)):
-            product[i] = self.clean_product_data(product[i])
+        product[0] = self.clean_product_data(product[0])
 
         # Save product data
         self.dal.save_product(product)
