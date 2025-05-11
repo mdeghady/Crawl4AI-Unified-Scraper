@@ -1,0 +1,26 @@
+{
+  "brands_urls_schema" : {
+        "name": "Primo URLs Schema",
+        "baseSelector": "div.brands a",
+        "fields": [
+            {"name": "BrandName",
+             "selector": "div.brand",
+             "type": "text"},
+            {"name": "BrandURL",
+             "type": "attribute",
+             "attribute": "href"}
+        ]
+    },
+  "products_urls_schema" : {
+        "name": "Primo Product URLs Schema",
+        "baseSelector": "div.product-tile__info",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "a.link.link--color--inherit.js-gtm-pclick",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    }
+}

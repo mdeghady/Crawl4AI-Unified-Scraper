@@ -1,0 +1,97 @@
+{
+    "brands_urls_schema" : {
+          "name": "Goccia URLs Schema",
+          "baseSelector": "div.elementor-toggle-item ul.list-group li.list-group-item",
+          "fields": [
+              {"name": "BrandName",
+               "selector": "h3",
+               "type": "text"},
+              {"name": "BrandURL",
+               "selector": "a",
+               "type": "attribute",
+               "attribute": "href"}
+          ]
+    },
+    "products_urls_schema" : {
+          "name": "Goccia Product URLs Schema",
+          "baseSelector": "ul.products li div.product-inner",
+          "fields": [
+              {
+                  "name": "ProductURL",
+                  "selector": "a.woocommerce-LoopProduct-link",
+                  "type": "attribute",
+                  "attribute": "href"
+              }
+          ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "nav.woocommerce-pagination ul li:last-child",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" : {
+        "name": "Goccia Product Schema",
+        "baseSelector": "body",
+        "fields":[
+          {
+              "name" : "Brand",
+              "selector" : "div.summary p.brand_product",
+              "type" : "text"
+          },
+          {
+              "name" : "ProductName",
+              "selector" : "h1.product_title",
+              "type" : "text"
+          },
+          {
+              "name" : "CurrentPrice",
+              "selector" : ["p.price ins" , "p.price bdi"],
+              "type" : "text"
+          },
+          {
+              "name" : "OldPrice",
+              "selector" : "p.price del",
+              "type" : "text",
+              "default" : ""
+          },
+          {
+              "name" : "ProductColor",
+              "selector" : "div.colore ul.products li:has(> picture:first-child)",
+              "type" : "text"
+          },
+          {
+              "name" : "SkuCode",
+              "selector" : "div.product_meta span.sku",
+              "type" : "text"
+          },
+          {
+              "name" : "AvailableSizes",
+              "selector" : "select#taglia option.attached.enabled",
+              "type": "list",
+              "fields": [
+                  {
+                      "name": "Size",
+                      "type": "text"
+                  }
+              ]
+          },
+          {
+              "name" : "Collection",
+              "selector" : "li.woocommerce-product-attributes-item--attribute_pa_collezione span.woocommerce-product-attributes-item__value",
+              "type": "text"
+          },
+          {
+              "name" : "category",
+              "selector" : "div.site-breadcrumbs a:nth-child(5)",
+              "type": "text"
+          }
+      ]
+    }
+}

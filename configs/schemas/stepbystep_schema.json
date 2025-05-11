@@ -1,0 +1,96 @@
+{
+  "brands_urls_schema" : {
+        "name": "StepbyStep URLs Schema",
+        "baseSelector": "div.row div.lista_brand div.col-xs-6",
+        "fields": [
+            {"name": "BrandName",
+             "selector": "a",
+             "type": "text"},
+            {"name": "BrandURL",
+             "selector": "a",
+             "type": "attribute",
+             "attribute": "href"}
+        ]
+  },
+  "products_urls_schema" : {
+        "name": "StepbyStep Product URLs Schema",
+        "baseSelector": "div.row div.item div.product-details div.product-name",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+  },
+  "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "div.pagination ul li.next",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "a:not([disabled])",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+  },
+  "product_page_schema" : {
+      "name": "StepbyStep Product Schema",
+      "baseSelector": "div#page-content",
+      "fields":[
+          {
+            "name" : "Brand",
+            "selector" : "div.product-single__subtitle a[title]",
+            "type" : "text"
+          },
+          {
+            "name" : "ProductName",
+            "selector" : "div.product-single__meta h1.product-single__title",
+            "type" : "text"
+          },
+          {
+            "name" : "ProductImage",
+            "selector" : "div.zoompro-span img",
+            "type" : "attribute",
+            "attribute" : "src"
+          },
+          {
+            "name" : "CurrentPrice",
+            "selector" : "div.product-single__price span.product-price__price",
+            "type" : "text"
+          },
+          {
+            "name" : "OldPrice",
+            "selector" : "div.product-single__price span.product-price-old-price",
+            "type" : "text",
+            "default" : "0"
+          },
+          {
+            "name" : "ProductColor",
+            "selector" : "div.product-form__item span.slVariant",
+            "type" : "text",
+            "default" : ""
+          },
+          {
+            "name" : "AvailableSizes",
+            "selector" : "ul.swatches-size li",
+            "type" : "list",
+            "default" : [],
+            "fields" : [
+              {
+                "name" : "Size",
+                "selector" : "label",
+                "type" : "text"
+              }
+            ]
+          },
+          {
+            "name" : "Category",
+            "selector" : "div.breadcrumbs a:nth-child(3)",
+            "type" : "text"
+          }
+      ]
+  }
+}

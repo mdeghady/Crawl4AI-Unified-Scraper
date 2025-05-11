@@ -1,0 +1,118 @@
+{
+  "brands_urls_schema" : {
+        "name": "Lelefantino URLs Schema",
+        "baseSelector": "ul.li-brands li",
+        "fields": [
+            {"name": "BrandName",
+             "selector": "a",
+             "type": "text"},
+            {"name": "BrandURL",
+             "selector": "a",
+             "type": "attribute",
+             "attribute": "href"}
+        ]
+    },
+  "products_urls_schema" : {
+        "name": "Lelefantino Product URLs Schema",
+        "baseSelector": "div.product-list div.image-cont",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "a.product-link",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+  "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "body",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "button.usf-load-more",
+                "type": "text"
+            }
+        ]
+    },
+  "product_page_schema": {
+      "name": "Lelefantino Product Schema",
+      "baseSelector": "div.product-detail",
+      "fields":[
+          {
+            "name":"Brand",
+            "selector":"div.vendor a",
+            "type":"text"
+          },
+          {
+                "name": "ProductName",
+                "selector": "h1.title",
+                "type": "text"
+            },
+            {
+                "name": "ProductImage",
+                "selector": "div.rimage-wrapper img",
+                "type": "attribute",
+                "attribute": "srcset"
+            },
+            {
+                "name": "ProductColor",
+                "selector": "div.product-custom-variant > span:nth-child(4)",
+                "type": "text"
+            },
+          {
+              "name":"NewPrice",
+              "selector": "div.price-area span.current-price",
+              "type":"text",
+              "default":"0"
+          },
+          {
+              "name":"OldPrice",
+              "selector": "div.price-area span.was-price",
+              "type":"text",
+              "default":"0"
+          },
+          {
+              "name":"AvailableSizes",
+              "selector": "ul.clickyboxes li",
+              "type":"list",
+              "fields":[
+                  {"name":"size" , "type":"text"}
+              ]
+          },
+          {
+              "name":"Description",
+              "selector": "div.description",
+              "type":"text"
+          },
+          {
+              "name":"ProductCode",
+              "selector": " div.detail.product-column-right.gallery-layout-beside > span > span",
+              "type":"text"
+          },
+          {
+              "name":"StyleCode",
+              "selector": "div.detail.product-column-right.gallery-layout-beside > span > span.custom-data",
+              "type":"text"
+          },
+          {
+              "name":"ProductNote",
+              "selector": "div.product-custom-variant > g",
+              "type":"text"
+          },
+          {
+              "name":"OtherColorsURLs",
+              "selector": "div.product-custom-variant li:not(.current-custom-variant)",
+              "type":"list",
+              "fields":[
+                  {
+                      "name":"ColorURL",
+                      "selector": "a",
+                      "type": "attribute",
+                      "attribute": "href"
+                  }
+              ]
+          }
+      ]
+  }
+}

@@ -1,0 +1,173 @@
+{
+    "brands_urls_schema" : {
+        "name": "Wardow URLs Schema",
+        "baseSelector": "div.brand-group ul li",
+        "fields": [
+            {"name": "BrandName",
+             "selector": "a",
+             "type": "text"},
+            {"name": "BrandURL",
+             "selector": "a",
+             "type": "attribute",
+             "attribute": "href"}
+        ]
+    },
+    "products_urls_schema" : {
+        "name": "Wardow Product URLs Schema",
+        "baseSelector": "div.product-tile__info",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "a.link.link--color--inherit.js-gtm-pclick",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "body",  
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "button.next:not(.disabled)",
+                "type": "attribute",
+                "attribute": "value"
+            }
+        ]
+    },
+    "product_page_schema" : {
+        "name": "Wardow Product Schema",
+        "baseSelector": "div.product-main",
+        "fields": [
+            {
+            "name":"Brand",
+            "selector":"div.product-shop a.product-manufacturer span",
+            "type":"text"
+            },
+            {
+                "name": "ProductName",
+                "selector": "span.product-name",
+                "type": "text"
+            },
+            {
+                "name": "ProductImage",
+                "selector": "img.gallery-image",
+                "type": "attribute",
+                "attribute": "src"
+            },
+            {
+                "name": "ProductColor",
+                "selector": "div.colors p.headline span",
+                "type": "text"
+            },
+            {
+                "name": "StockStatus",
+                "selector": "p.availability span",
+                "type": "text"
+            },
+            {
+                "name": "AvailabilityNote",
+                "selector": "p.availability",
+                "type": "text"
+            },
+            {
+                "name": "StockQuantityLeft",
+                "selector": "p.availability-only strong",
+                "type": "text"
+            },
+            {
+                "name": "CurrentPrice",
+                "selector": ["p.special-price span.price meta[itemprop='price']","span.regular-price span.price"],
+                "type": "text",
+                "default": "0"
+            },
+            {
+                "name": "OriginalPrice",
+                "selector": ["p.old-price span.price","span.regular-price span.price"],
+                "type": "text",
+                "default": "0"
+            },
+            {
+                "name": "DiscountAmount",
+                "selector": "div.price-info__sale span.price",
+                "type": "text",
+                "default": "0"
+            },
+            {
+                "name": "PriceCurrency",
+                "selector": "meta[itemprop='priceCurrency']",
+                "type": "attribute",
+                "attribute": "content"
+            },
+            {
+                "name": "CurrentOffer",
+                "selector": "div.widget",
+                "type": "text",
+                "default":""
+            },
+            {
+                "name": "OfferCode",
+                "selector": "div.widget span",
+                "type": "text",
+                "default":""
+            },
+            {
+                "name": "sku",
+                "selector": "div.description-general li.sku span[itemprop='sku']",
+                "type": "text",
+                "default":""
+            },
+            {
+                "name": "ProductDetails",
+                "selector": "div.description-details div.std li",
+                "type": "list",
+                "fields":[
+                    {"name":"feature","type":"text"}
+                ]
+            },
+            {
+                "name": "DescriptionInside",
+                "selector": "div.description-inside div.std li",
+                "type": "list",
+                "fields":[
+                    {"name":"feature","type":"text"}
+                ]
+            },
+            {
+                "name": "DescriptionGeneral",
+                "selector": "div.description-general li:not(.sku)",
+                "type": "list",
+                "fields":[
+                    {"name":"feature","type":"text"}
+
+                ]
+            },
+            {
+              "name":"OtherColorsURLs",
+              "selector": "div.product-main div.colors li",
+              "type":"list",
+              "fields":[
+                  {
+                      "name":"ColorURL",
+                      "selector": "a",
+                      "type": "attribute",
+                      "attribute": "href"
+                  }
+              ]
+            }
+        ]
+    },
+    "color_urls_schema" : {
+        "name": "Wardow Product Color URLs Schema",
+        "baseSelector": "div.product-main div.colors ul li",
+        "fields": [
+            {
+                "name": "ColorURL",
+                "selector": "a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    }
+}

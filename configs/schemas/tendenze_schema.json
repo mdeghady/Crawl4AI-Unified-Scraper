@@ -1,0 +1,123 @@
+{
+    "brands_urls_schema" : {
+        "name": "Tendenze URLs Schema",
+        "baseSelector": "div.item div",
+        "fields": [
+            {"name": "BrandName",
+             "selector": "a",
+             "type": "text"},
+            {"name": "BrandURL",
+             "selector": "a",
+             "type": "attribute",
+             "attribute": "href"}
+        ]
+    },
+    "products_urls_schema" : {
+        "name": "Tendenze Product URLs Schema",
+        "baseSelector": "div.contfoto",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "div.cotienifoto a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "body",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "li.pagine.invisibile + li.pagine a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" : {
+        "name": "Tendenze Product URLs Schema",
+        "baseSelector": "body",
+        "fields": [
+            {
+                "name": "Brand",
+                "selector": "div#bloccoh1 h2 a",
+                "type": "text"
+            },
+            {
+                "name": "ProductName",
+                "selector": "div.codicearticolo",
+                "type": "text"
+            },
+            {
+                "name": "ProductImage",
+                "selector": "div.swiper-slide a",
+                "type": "attribute",
+                "attribute": "href"
+            },
+            {
+                "name": "Category",
+                "selector": "div#bloccoh1 a h2",
+                "type": "text"
+            },
+            {
+                "name": "NewPrice",
+                "selector": "div#prezzidettaglioprezzo span.saldi2",
+                "type": "text"
+            },
+            {
+                "name": "OldPrice",
+                "selector": "div#prezzidettaglioprezzo span.saldi",
+                "type": "text"
+            },
+            {
+                "name": "AvailableSizes",
+                "selector": "div.bloccodett",
+                "type": "nested_list",
+                "fields":[
+                  {
+                "name": "option1",
+                "selector": "div.taglia",
+                "type": "list",
+                "fields":[
+                  {
+                      "name":"Size",
+                      "type": "text"
+                  }
+              ]
+            },
+            {
+                "name": "option2",
+                "selector": "select#tagliaopz option[data-idt]",
+                "type": "list",
+                "fields":[
+                  {
+                      "name":"Size",
+                      "type": "text"
+                  }
+              ]
+            }
+              ]
+            },
+            {
+                "name": "SkuCode",
+                "selector": "div.codicearticolo",
+                "type": "text"
+            },
+            {
+              "name":"OtherColorsURLs",
+              "selector": "div.productdescrizione div.col2mobile",
+              "type":"list",
+              "fields":[
+                  {
+                      "name":"ColorURL",
+                      "selector": "a",
+                      "type": "attribute",
+                      "attribute": "href"
+                  }
+              ]
+          }
+        ]
+    }
+}

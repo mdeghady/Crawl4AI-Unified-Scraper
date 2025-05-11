@@ -1,0 +1,91 @@
+{
+  "brands_urls_schema" : {
+          "name": "CoolCulture URLs Schema",
+          "baseSelector": "div.container-vendors div.hold-vendor h5.wrap-vendor",
+          "fields": [
+              {"name": "BrandName",
+               "selector": "a.vendor",
+               "type": "text"},
+              {"name": "BrandURL",
+               "selector": "a.vendor",
+               "type": "attribute",
+               "attribute": "href"}
+          ]
+  },
+  "products_urls_schema" : {
+          "name": "CoolCulture Product URLs Schema",
+          "baseSelector": "div.collection__products div.product-grid-item",
+          "fields": [
+              {
+                  "name": "ProductURL",
+                  "selector": "a.product__media__holder",
+                  "type": "attribute",
+                  "attribute": "href"
+              }
+          ]
+  },
+  "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "div.pagination span.next",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+  },
+  "product_page_schema" : {
+      "name": "CoolCulture Product Schema",
+      "baseSelector": "div.product-single__wrapper",
+      "fields":[
+          {
+            "name" : "Brand",
+            "selector" : "div.product-single__details div.product__block nav.breadcrumbs a",
+            "type" : "text"
+          },
+          {
+            "name" : "ProductName",
+            "selector" : "div.product-single__details div.product__block h1.product__title",
+            "type" : "text"
+          },
+          {
+            "name" : "ProductColor",
+            "selector" : "div.form__wrapper div:not([class]) p",
+            "type" : "text",
+            "default" : ""
+          },
+          {
+            "name" : "CurrentPrice",
+            "selector" : "div.product__price-and-badge div.product__price span.product__price--regular",
+            "type" : "text"
+          },
+          {
+            "name" : "OldPrice",
+            "selector" : "div.product__price-and-badge div.product__price s.product__price--compare",
+            "type" : "text",
+            "default" : "0"
+          },
+          {
+            "name" : "AvailableSizes",
+            "selector" : "div.selector-wrapper span.radio__button:not(.sold-out)",
+            "type" : "list",
+            "default" : [],
+            "fields" : [
+              {
+                "name" : "Size",
+                "selector" : "label",
+                "type" : "text"
+              }
+            ]
+          },
+          {
+            "name" : "Collection",
+            "selector" : "div.product__description p:last-child",
+            "type" : "text",
+            "default" : ""
+          }
+      ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "brands_urls_schema": {
+    "name": "GRS URLs Schema",
+    "baseSelector": "li[data-title=\"Brand\"] div.mega-menu ul.mega-menu__linklist li",
+    "fields": [
+      {
+        "name": "BrandName",
+        "selector": "a",
+        "type": "text"
+      },
+      {
+        "name": "BrandURL",
+        "selector": "a",
+        "type": "attribute",
+        "attribute": "href"
+      }
+    ]
+  },
+  "products_urls_schema" : {
+        "name": "GRS Product URLs Schema",
+        "baseSelector": "div.collection__main .product-card",
+        "fields": [
+            {
+                "name": "ProductURL",
+                "selector": "a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "nav.pagination",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "a[rel='next']",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" : {
+        "name": "GRS Product URLs Schema",
+        "baseSelector": "body",
+        "fields": [
+            {"name": "Brand",
+             "selector": "div.product-info__block-list div[data-block-type=\"vendor\"]",
+             "type": "text"},
+            {"name": "ProductName",
+             "selector": "div.product-info__block-list div[data-block-type=\"title\"]",
+             "type": "text"},
+            {"name": "ProductImage",
+             "selector": "div.product-gallery__media img",
+             "type": "attribute",
+             "attribute":"src"},
+            {"name": "CurrentPrice",
+             "selector": "div.product-info__block-list div[data-block-type=\"price\"] sale-price",
+             "type": "text"},
+            {"name": "Old Price",
+             "selector": "div.product-info__block-list div[data-block-type=\"price\"] compare-at-price",
+             "type": "text"},
+            {"name": "AvailableSizes",
+             "selector": "div.product-info__block-list div[data-block-type=\"variant-picker\"] label.block-swatch:not(.is-disabled) span",
+             "type": "list",
+             "fields":[
+                 {"name":"Size" , "type":"text"}
+             ]}
+        ]
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "brands_urls_schema" : {
+          "name": "Pellecchia URLs Schema",
+          "baseSelector": "div.elenco div.col-sm-12 div.cols ul li",
+          "fields": [
+              {"name": "BrandName",
+               "selector": "a",
+               "type": "text"},
+              {"name": "BrandURL",
+               "selector": "a",
+               "type": "attribute",
+               "attribute": "href"}
+          ]
+    },
+    "products_urls_schema" : {
+          "name": "Pelleccia Product URLs Schema",
+          "baseSelector": "div.container-fluid div.item div.frame div.cnt",
+          "fields": [
+              {
+                  "name": "ProductURL",
+                  "selector": "a.prod",
+                  "type": "attribute",
+                  "attribute": "href"
+              }
+          ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "body",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "div.paginazione ul li:last-child:not(.disabled) a",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" : {
+      "name": "Pelleccia Product Schema",
+      "baseSelector": "body",
+      "fields":[
+        {
+                "name": "Brand",
+                "selector": "div.txt h1",
+                "type": "text"
+            },
+            {
+                "name": "ProductName",
+                "selector": "div.txt h2",
+                "type": "text"
+            },
+            {
+                "name": "ProductImage",
+                "selector": "div.imgb a[data-fancybox=\"gallery\"]",
+                "type": "attribute",
+                "attribute": "href"
+            },
+            {
+                "name": "SkuCode",
+                "selector": "div.txt h6",
+                "type": "text"
+            },
+            {
+                "name": "CurrentPrice",
+                "selector": "h3.price em",
+                "type": "text"
+            },
+            {
+                "name": "OldPrice",
+                "selector": "h3.price del",
+                "type": "text"
+            },
+            {
+                "name": "AvailableSizes",
+                "selector": "div#cart_section div#taglia_wrap a",
+                "type": "list",
+                "fields": [
+                    {
+                        "name": "Size",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "name": "Description",
+                "selector": "div#descrizione p:nth-child(1)",
+                "type": "text"
+            },
+            {
+                "name": "ProductColor",
+                "selector": "div#descrizione p:nth-child(2)",
+                "type": "text"
+            }
+      ]
+    }
+}

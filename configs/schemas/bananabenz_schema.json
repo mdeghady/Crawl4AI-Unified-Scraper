@@ -1,0 +1,26 @@
+{
+  "brands_urls_schema" : {
+      "name": "Bananabenz Brands URLs Schema",
+      "baseSelector": "div#sbp-brands-wrapper div.brand-section div.brands a",
+      "fields": [
+          {"name": "BrandName",
+           "type": "text"},
+          {"name": "BrandURL",
+           "type": "attribute",
+           "attribute": "href"}
+      ]
+    },
+  "products_urls_schema" : {
+      "name": "Bananabenz Product URLs Schema",
+      "baseSelector": "div.collection ul#product-grid li.collection-product-card",
+      "fields": [
+          {
+              "name": "ProductURL",
+              "selector": "div.product-card div.card a",
+              "type": "attribute",
+              "attribute": "href"
+          }
+      ]
+  }
+
+}
