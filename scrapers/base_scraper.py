@@ -58,7 +58,12 @@ class BaseScraper(ABC):
                 for product_url in product_urls:
                     # Extract product details
                     product_url['ProductURL'] = urljoin(self.base_url, product_url['ProductURL'])
-                    await self.parse_product(product_url['ProductURL'], brand['BrandName'])
+                    try:
+                        await self.parse_product(product_url['ProductURL'], brand['BrandName'])
+                    except Exception as e:
+                        self.logger.exception(f"Error parsing product {product_url['ProductURL']}: {e}")
+                        continue
+            self.dal.flush()
             self._save_json(self.website_products, f'products_pages_{self.__class__.__name__}.json')
 
         except Exception as e:
@@ -156,6 +161,9 @@ class NextPageButtonScraper(BaseScraper):
             if products_result:
                 product_urls.extend(products_result)
             self.logger.info(f"Found {len(products_result)} products in {current_url}")
+            if not products_result:
+                self.logger.warning(f"No products found at {current_url}. Stopping pagination.")
+                break
 
             # Get next page
             current_url = await self._get_next_page_url(current_url)
@@ -168,7 +176,9 @@ class NextPageButtonScraper(BaseScraper):
             url=url,
             config=CrawlerRunConfig(
                 cache_mode=CacheMode.BYPASS,
-                extraction_strategy=JsonCssExtractionStrategy(schema=self.schema['products_urls_schema'])
+                extraction_strategy=JsonCssExtractionStrategy(schema=self.schema['products_urls_schema']),
+                wait_for=self.schema['products_urls_schema']['baseSelector']  # Wait for the products to load
+
             )
         )
         return json.loads(result.extracted_content) if result.extracted_content else []
