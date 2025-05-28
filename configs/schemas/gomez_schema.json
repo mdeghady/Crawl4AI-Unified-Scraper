@@ -1,0 +1,92 @@
+{
+    "brands_urls_schema" : {
+          "name": "Gomez Brands URLs Schema",
+          "baseSelector": "div.brand-body div.col-md-2.col-6",
+          "fields": [
+              {"name": "BrandName",
+               "selector": "a[title]",
+               "type": "text"},
+              {"name": "BrandURL",
+               "selector": "a[title]",
+               "type": "attribute",
+               "attribute": "href"}
+          ]
+    },
+    "products_urls_schema" : {
+          "name": "Gomez Product URLs Schema",
+          "baseSelector": "div#products div.no-gutters-md div[data-index] div[data-ecommerce] div.product-image",
+          "fields": [
+              {
+                  "name": "ProductURL",
+                  "selector": "a.product-url",
+                  "type": "attribute",
+                  "attribute": "href"
+              }
+          ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "link[rel='next']",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" : {
+        "name": "Gomez Product Schema",
+        "baseSelector": "body",
+        "fields":[
+          {
+              "name" : "Brand",
+              "selector" : "div#product-replace-new div.col.mr-auto div.h5.fs-11 a u",
+              "type" : "text"
+          },
+          {
+              "name" : "ProductName",
+              "selector" : "div#product-replace-new div.col.mr-auto h1.font-weight-semi",
+              "type" : "text"
+          },
+          {
+              "name" : "CurrentPrice",
+              "selector" : "div.product-price span.price-club",
+              "type" : "text"
+          },
+          {
+              "name" : "OriginalPrice",
+              "selector" : "div#price-history span.regular-font-size-x span",
+              "type" : "text",
+              "default": ""
+          },
+          {
+              "name" : "ProductColor",
+              "selector" : "div#colors-replace div.col-auto.colors-title strong",
+              "type" : "text"
+          },
+          {
+              "name" : "SkuCode",
+              "selector" : "div.product-description div#productDesc1 tbody td:-soup-contains('Codice')+td",
+              "type" : "text"
+          },
+          {
+              "name" : "AvailableSizes",
+              "selector" : "div#product-replace-new div.size-select select.selectpicker.size-select option:not([disabled])",
+              "type": "list",
+              "fields": [
+                  {
+                      "name": "Size",
+                      "type": "attribute",
+                      "attribute": "title"
+                  }
+              ]
+          },
+          {
+              "name" : "category",
+              "selector" : "div#product-replace-new div.col.mr-auto h1.font-weight-semi",
+              "type": "text"
+          }
+      ]
+    }
+}

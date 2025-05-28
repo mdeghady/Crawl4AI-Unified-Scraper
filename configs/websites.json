@@ -78,5 +78,12 @@
         "pagination_type": "infinite_scroll",
         "schema_path": "configs/schemas/stepbystep_schema.json",
         "scraper_class": "BananabenzScraper"
+    },
+    "gomez": {
+        "base_url": "https://www.gomez.moda",
+        "brands_url": "/it/brand/",
+        "pagination_type": "next_page_button",
+        "schema_path": "configs/schemas/gomez_schema.json",
+        "scraper_class": "GomezScraper"
     }
 }
