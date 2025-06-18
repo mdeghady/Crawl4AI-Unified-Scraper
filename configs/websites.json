@@ -85,5 +85,33 @@
         "pagination_type": "next_page_button",
         "schema_path": "configs/schemas/gomez_schema.json",
         "scraper_class": "GomezScraper"
+    },
+    "tradeinn": {
+        "base_url": "https://www.tradeinn.com/it",
+        "brands_url": "",
+        "pagination_type": "next_page_button",
+        "schema_path": "configs/schemas/tradeinn_schema.json",
+        "scraper_class": "TradeInnScraper"
+    },
+    "answear-uomo": {
+        "base_url": "https://answear.it",
+        "brands_url": "/marche/uomo",
+        "pagination_type": "next_page_button",
+        "schema_path": "configs/schemas/answear_schema.json",
+        "scraper_class": "AnswearScraper"
+    },
+    "answear-donna": {
+        "base_url": "https://answear.it",
+        "brands_url": "/marche/donna",
+        "pagination_type": "next_page_button",
+        "schema_path": "configs/schemas/answear_schema.json",
+        "scraper_class": "AnswearScraper"
+    },
+    "answear-bambini": {
+        "base_url": "https://answear.it",
+        "brands_url": "/marche/bambini",
+        "pagination_type": "next_page_button",
+        "schema_path": "configs/schemas/answear_schema.json",
+        "scraper_class": "AnswearScraper"
     }
 }
