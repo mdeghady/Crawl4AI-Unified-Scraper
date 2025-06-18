@@ -12,4 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir awscli
 
 # Run the crawl4ai-setup command
-CMD ["crawl4ai-setup"]
+RUN crawl4ai-setup
+
+# Expose port 8000 to let the container listen on this port
+EXPOSE 8000
