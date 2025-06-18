@@ -11,8 +11,5 @@ COPY Crawl4AI-Unified-Scraper/ ./
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir awscli
 
-# Run the crawl4ai-setup command
-RUN crawl4ai-setup
-
-# Expose port 8000 to let the container listen on this port
-EXPOSE 8000
+# Run setup and then sleep forever
+CMD ["sh", "-c", "crawl4ai-setup && tail -f /dev/null"]
