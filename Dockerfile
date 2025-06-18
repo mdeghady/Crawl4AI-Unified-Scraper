@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir awscli
 
 # Run the crawl4ai-setup command
-RUN crawl4ai-setup
+CMD ["crawl4ai-setup"]
