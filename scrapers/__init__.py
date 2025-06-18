@@ -8,7 +8,8 @@ from .goccia_scraper import GocciaScraper
 from .coolculture_scraper import CoolcultureScraper
 from .stepbystep_scraper import StepbystepScraper
 from .gomez_scraper import GomezScraper
+from .answear_scraper import AnswearScraper
 
 __all__ = ['WardowScraper','LelefantinoScraper','PrimoScraper','TendenzeScraper',
            'GrsScraper','PellecchiaScraper','GocciaScraper','CoolcultureScraper',
-           'StepbystepScraper','GomezScraper']
+           'StepbystepScraper','GomezScraper','answear_scraper']

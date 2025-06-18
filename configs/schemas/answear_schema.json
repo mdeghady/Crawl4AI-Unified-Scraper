@@ -1,0 +1,94 @@
+{
+    "brands_urls_schema" : {
+          "name": "Answear URLs Schema",
+          "baseSelector": "ul[data-test='listBrands'] li div ul li",
+          "fields": [
+              {"name": "BrandName",
+               "selector": "a",
+               "type": "text"},
+              {"name": "BrandURL",
+               "selector": "a",
+               "type": "attribute",
+               "attribute": "href"}
+          ]
+    },
+    "products_urls_schema" : {
+          "name": "Answear Product URLs Schema",
+          "baseSelector": "div.Products__productsFullWide__WNGME div div div",
+          "fields": [
+              {
+                  "name": "ProductURL",
+                  "selector": "a[data-test='productItem']",
+                  "type": "attribute",
+                  "attribute": "href"
+              }
+          ]
+    },
+    "pagination_schema" : {
+        "name": "Pagination Check",
+        "baseSelector": "div[data-test='pagination']",
+        "fields": [
+            {
+                "name": "next_page_url",
+                "selector": "a[data-test='paginationPageNextButton']",
+                "type": "attribute",
+                "attribute": "href"
+            }
+        ]
+    },
+    "product_page_schema" :{
+        "name": "Answear Product Schema",
+        "baseSelector": "body",
+        "fields":[
+          {
+              "name" : "Brand",
+              "selector" : "div.ProductCard__productNameAndLogo__N28so figure[data-test='productCardBrandLogo'] a img",
+              "type" : "attribute",
+              "attribute" : "alt"
+          },
+          {
+              "name" : "ProductName",
+              "selector" : "div.ProductCard__productNameAndLogo__N28so h1 span",
+              "type" : "text"
+          },
+          {
+              "name" : "ProductImage",
+              "selector" : "div#galleryItem0 div picture img",
+              "type" : "attribute",
+              "attribute" : "src"
+          },
+          {
+              "name" : "CurrentPrice",
+              "selector" : ["span.ProductCard__percentageDiscountColorRed__OXokM" , "div.ProductCard__priceWrapper__HY49o div[data-test='regularPrice'] div.ProductCard__priceRegular__IhSyk"],
+              "type" : "text"
+          },
+          {
+              "name" : "OriginalPrice",
+              "selector" : "div.ProductCard__priceRegularMinimalLabel__QxGuJ span:-soup-contains('EUR')",
+              "type" : "text",
+              "default" : ""
+          },
+          {
+              "name" : "ProductColor",
+              "selector" : "div.ColorVersionPhotoPicker__photoPickerSection__Xc-Yl div.ProductCard__photoPickerCurrent__VevNL span",
+              "type" : "text"
+          },
+          {
+              "name" : "sku",
+              "selector" : "div.Accordion__accordionDescription__JO6OT div:last-child span:last-child",
+              "type" : "text"
+          },
+          {
+               "name" : "info",
+              "selector" : "main script[type='application/ld+json']",
+               "type" : "text"
+
+          },
+          {
+              "name" : "Department",
+              "selector" : "ul.CategoriesSection__menuMainSection__v7NR0 a[data-test='selected_category']",
+              "type": "text"
+          }
+      ]
+    }
+}
